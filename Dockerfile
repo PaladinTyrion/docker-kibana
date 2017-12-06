@@ -94,8 +94,10 @@ RUN chmod 644 /etc/logrotate.d/kibana
 #                               PREPARE START
 ###############################################################################
 
+COPY ./replace_ips.sh /usr/local/bin/replace_ips.sh
 COPY ./start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/replace_ips.sh \
+    && chmod +x /usr/local/bin/start.sh
 
 ###############################################################################
 #                                XPACK INSTALLATION

@@ -31,6 +31,9 @@ rm -f /var/run/kibana5.pid
 ## initialise list of log files to stream in console (initially empty)
 OUTPUT_LOGFILES=""
 
+# modify configuration
+/usr/local/bin/replace_ips.sh
+
 ## override default time zone (Etc/UTC) if TZ variable is set
 if [ ! -z "$TZ" ]; then
   ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
