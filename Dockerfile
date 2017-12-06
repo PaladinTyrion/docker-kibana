@@ -70,7 +70,8 @@ RUN curl -O https://artifacts.elastic.co/downloads/kibana/${KIBANA_PACKAGE} \
     && tar -xzf ${KIBANA_PACKAGE} -C ${KIBANA_HOME} --strip-components=1 \
     && rm -f ${KIBANA_PACKAGE} \
     && apt-get autoremove \
-		&& apt-get autoclean
+		&& apt-get autoclean \
+    && chown -R kibana:kibana ${KIBANA_HOME}
 
 COPY ./kibana-init /etc/init.d/kibana
 RUN sed -i -e 's#^KIBANA_HOME=$#KIBANA_HOME='$KIBANA_HOME'#' /etc/init.d/kibana \
