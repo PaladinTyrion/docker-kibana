@@ -78,6 +78,19 @@ RUN sed -i -e 's#^KIBANA_HOME=$#KIBANA_HOME='$KIBANA_HOME'#' /etc/init.d/kibana 
     && chmod +x /etc/init.d/kibana
 
 ###############################################################################
+#                           INSTALL KIBANA-ELASTALERT
+###############################################################################
+
+ENV KIBANA_ELASTALERT_PACKAGE elastalert-${KIBANA_VERSION}-latest.zip
+
+RUN set -x \
+    && curl -O https://git.bitsensor.io/front-end/elastalert-kibana-plugin/builds/artifacts/kibana5/raw/artifact/${KIBANA_ELASTALERT_PACKAGE}?job=build \
+    && ${KIBANA_HOME}/bin/kibana-plugin install ${KIBANA_ELASTALERT_PACKAGE} \
+    && rm -f ${KIBANA_ELASTALERT_PACKAGE} \
+    && ${KIBANA_HOME}/bin/kibana-plugin list \
+    && set +x
+
+###############################################################################
 #                               CONFIGURATION
 ###############################################################################
 
