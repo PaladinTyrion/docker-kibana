@@ -34,7 +34,7 @@ server.defaultRoute: "/app/kibana"
 kibana.index: ".kibana"
 
 # The default application to load.
-kibana.defaultAppId: "logging"
+########## kibana.defaultAppId: "logging"
 
 # If your Elasticsearch is protected with basic authentication, these settings provide
 # the username and password that the Kibana server uses to perform maintenance on the Kibana
@@ -62,7 +62,7 @@ kibana.defaultAppId: "logging"
 
 # Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
 # the elasticsearch.requestTimeout setting.
-elasticsearch.pingTimeout: 2000
+elasticsearch.pingTimeout: 3000
 
 # Time in milliseconds to wait for responses from the back end or Elasticsearch. This value
 # must be a positive integer.
@@ -83,16 +83,16 @@ elasticsearch.requestTimeout: 60000
 elasticsearch.startupTimeout: 10000
 
 # Specifies the path where Kibana creates the process ID file.
-#pid.file: /var/run/kibana.pid
+pid.file: /var/run/kibana.pid
 
 # Enables you specify a file where Kibana stores log output.
-#logging.dest: stdout
+logging.dest: /data2/kibana/logs/kibana.log
 
 # Set the value of this setting to true to suppress all logging output.
 #logging.silent: false
 
 # Set the value of this setting to true to suppress all logging output other than error messages.
-#logging.quiet: false
+logging.quiet: true
 
 # Set the value of this setting to true to log all events, including system usage information
 # and all requests.

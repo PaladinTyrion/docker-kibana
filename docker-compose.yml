@@ -1,0 +1,10 @@
+version: "3"
+services:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.4.1
+    container_name: kibana
+    ports:
+      - 9956:5601
+    volumes:
+      - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+      - /data2/kibana/logs:/usr/share/kibana/logs
